@@ -6,7 +6,7 @@ import 'package:teledart/telegram.dart';
 void main() async {
   // String message = '';
 
-  var BOT_TOKEN = '6614464601:AAH8TWvonumBra2wsQXtKQY6eR6UCwUpyBQ';
+  var BOT_TOKEN = '6614464601:AAH8TWvonumBra2wsQXtKQY6eR6UCwUpyB';
   final username = (await Telegram(BOT_TOKEN).getMe()).username;
   var teledart = TeleDart(BOT_TOKEN, Event(username!));
 
@@ -27,7 +27,10 @@ void main() async {
       .onMessage(entityType: 'bot_command', keyword: 'getcode')
       .listen((message) {
     var file = File('tgbot.txt');
-    teledart.sendDocument(message.chat.id, file.readAsBytesSync(),);
+    teledart.sendDocument(
+      message.chat.id,
+      file.readAsBytesSync(),
+    );
   });
 
   teledart.onMessage().listen((msg) {
